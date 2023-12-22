@@ -5,7 +5,7 @@ const theme = {
   colors: {
     lightgray: '#2d2d2d',
     darkgray: '#191919',
-    primary: '#c73d00',
+    primary: '#2a84f3',
   },
   spacing: {
     small: '0.8rem',

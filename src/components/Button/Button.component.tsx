@@ -1,21 +1,24 @@
+import React from 'react';
 import { Btn } from './Button.style';
 
 interface ButtonProps {
-  val: string;
   toDisplay: VoidFunction;
   bg: string;
   align: number;
+  children?: React.ReactNode;
+  rest?: object;
 }
 
-function Button({ align, val, bg, toDisplay }: ButtonProps) {
+function Button({ align, bg, toDisplay, children, ...rest }: Readonly<ButtonProps>) {
   return (
     <Btn
       align={align}
-      primary={bg === 'primary' ? true : false}
-      dark={bg === 'dark' ? true : false}
+      primary={bg}
+      dark={bg === 'dark'}
       onClick={toDisplay}
+      {...rest}
     >
-      {val}
+      {children}
     </Btn>
   );
 }

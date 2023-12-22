@@ -10,11 +10,10 @@ import {
 
 import {
   equal,
-  isValidDisplay,
-  isValidToShowResult,
   percent,
 } from '../operations';
 import Display from '../Display';
+import { isValidDisplay, isValidToShowResult } from '../../helpers/validations';
 
 function Calculator() {
   const [displayValue, setDisplayValue] = useState<string>('');
@@ -59,116 +58,140 @@ function Calculator() {
         <Display data={displayValue} result={result} />
         <NumbersWrapper>
           <ButtonsGroup>
-            <Button align={1} bg="dark" toDisplay={onClear} val="Clear" />
-            <Button align={1} bg="dark" toDisplay={goBack} val="<--" />
+            <Button align={1} bg="dark" toDisplay={onClear}>
+              Clear
+            </Button>
+            <Button align={1} bg="dark" toDisplay={goBack}>
+              <i className="fa fa-angle-left"></i>
+            </Button>
           </ButtonsGroup>
           <ButtonsGroup>
             <Button
               align={2}
               bg="dark"
               toDisplay={() => handleButtonClick('^')}
-              val="raiz"
-            />
-            <Button align={1} bg="dark" toDisplay={calculatePercent} val="%" />
+            >
+              &#8730;
+            </Button>
+            <Button align={1} bg="dark" toDisplay={calculatePercent}>
+              %
+            </Button>
             <Button
               align={1}
               bg="dark"
               toDisplay={() => handleButtonClick('/')}
-              val="/"
-            />
+            >
+              /
+            </Button>
           </ButtonsGroup>
           <ButtonsGroup>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('7')}
-              val="7"
-            />
+            >
+              7
+            </Button>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('8')}
-              val="8"
-            />
+            >
+              8
+            </Button>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('9')}
-              val="9"
-            />
+            >
+              9
+            </Button>
             <Button
               align={1}
               bg="dark"
               toDisplay={() => handleButtonClick('*')}
-              val="*"
-            />
+            >
+              *
+            </Button>
           </ButtonsGroup>
           <ButtonsGroup>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('4')}
-              val="4"
-            />
+            >
+              4
+            </Button>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('5')}
-              val="5"
-            />
+            >
+              5
+            </Button>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('6')}
-              val="6"
-            />
+            >
+              6
+            </Button>
             <Button
               align={1}
               bg="dark"
               toDisplay={() => handleButtonClick('-')}
-              val="-"
-            />
+            >
+              -
+            </Button>
           </ButtonsGroup>
           <ButtonsGroup>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('1')}
-              val="1"
-            />
+            >
+              1
+            </Button>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('2')}
-              val="2"
-            />
+            >
+              2
+            </Button>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('3')}
-              val="3"
-            />
+            >
+              3
+            </Button>
             <Button
               align={1}
               bg="dark"
               toDisplay={() => handleButtonClick('+')}
-              val="+"
-            />
+            >
+              +
+            </Button>
           </ButtonsGroup>
           <ButtonsGroup>
             <Button
               align={2}
               bg="default"
               toDisplay={() => handleButtonClick('0')}
-              val="0"
-            />
+            >
+              0
+            </Button>
             <Button
               align={1}
               bg="default"
               toDisplay={() => handleButtonClick('.')}
-              val="."
-            />
-            <Button align={1} toDisplay={getEqual} bg="primary" val="=" />
+            >
+              .
+            </Button>
+            <Button align={1} toDisplay={getEqual} bg="primary">
+              =
+            </Button>
           </ButtonsGroup>
         </NumbersWrapper>
       </CalculatorContainer>
