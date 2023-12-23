@@ -28,11 +28,6 @@ export const isValidDisplay = (display: string, toAdd: string): boolean => {
   const isValidOperation = hasValidOperations(display, toAdd);
   const isInvalidFirst = isValidFirstCharacter(display, toAdd);
 
-  console.log(
-    isValidDots && isValidOperation && isInvalidFirst,
-    '   ',
-    isInvalidFirst
-  );
   return isValidDots && isValidOperation && isInvalidFirst;
 };
 

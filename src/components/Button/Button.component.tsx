@@ -8,14 +8,9 @@ interface ButtonProps {
   rest?: object;
 }
 
-function Button({
-  bg,
-  children,
-  onClick,
-  ...rest
-}: Readonly<ButtonProps>) {
+function Button({ bg, children, onClick, ...rest }: Readonly<ButtonProps>) {
   return (
-    <Btn  primary={bg} dark={bg === 'dark'} {...rest}>
+    <Btn primary={bg} dark={bg === 'dark'} onClick={onClick} {...rest}>
       {children}
     </Btn>
   );
