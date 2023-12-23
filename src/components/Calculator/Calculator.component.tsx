@@ -4,9 +4,9 @@ import Button from '../Button';
 import {
   Container,
   CalculatorContainer,
-  ButtonsGroup,
-  NumbersWrapper,
   Section,
+  ThreeButtonsSection,
+  ButtonsWrapper,
 } from './Calculator.style';
 
 import { equal, percent } from '../operations';
@@ -54,51 +54,40 @@ function Calculator() {
     <Container>
       <CalculatorContainer>
         <Display data={displayValue} result={result} />
-        <NumbersWrapper>
-          <ButtonsGroup>
-            <Button align={1} bg="dark" onClick={onClear}>
-              Clear
-            </Button>
-            <Button align={1} bg="dark" onClick={goBack}>
-              <i className="fa fa-angle-left"></i>
-            </Button>
-          </ButtonsGroup>
-          <ButtonsGroup>
-            <Button align={2} bg="dark" onClick={() => handleButtonClick('^')}>
-              &#8730;
-            </Button>
-            <Button align={1} bg="dark" onClick={calculatePercent}>
-              %
-            </Button>
-            <Button align={1} bg="dark" onClick={() => handleButtonClick('/')}>
-              /
-            </Button>
-          </ButtonsGroup>
-          <Section>
-            <NumbersSection handleButtonClick={handleButtonClick} />
-            <RightOperators handleButtonClick={handleButtonClick} />
-          </Section>
-
-          <ButtonsGroup>
-            <Button
-              align={2}
-              bg="default"
-              onClick={() => handleButtonClick('0')}
-            >
-              0
-            </Button>
-            <Button
-              align={1}
-              bg="default"
-              onClick={() => handleButtonClick('.')}
-            >
-              .
-            </Button>
-            <Button align={1} onClick={getEqual} bg="primary">
-              =
-            </Button>
-          </ButtonsGroup>
-        </NumbersWrapper>
+        <ButtonsWrapper>
+          <Button bg="dark" onClick={onClear}>
+            Clear
+          </Button>
+          <Button bg="dark" onClick={goBack}>
+            <i className="fa fa-angle-left"></i>
+          </Button>
+        </ButtonsWrapper>
+        <ThreeButtonsSection>
+          <Button bg="dark" onClick={() => handleButtonClick('^')}>
+            &#8730;
+          </Button>
+          <Button bg="dark" onClick={calculatePercent}>
+            %
+          </Button>
+          <Button bg="dark" onClick={() => handleButtonClick('/')}>
+            /
+          </Button>
+        </ThreeButtonsSection>
+        <Section>
+          <NumbersSection handleButtonClick={handleButtonClick} />
+          <RightOperators handleButtonClick={handleButtonClick} />
+        </Section>
+        <ThreeButtonsSection>
+          <Button bg="default" onClick={() => handleButtonClick('0')}>
+            0
+          </Button>
+          <Button bg="default" onClick={() => handleButtonClick('.')}>
+            .
+          </Button>
+          <Button onClick={getEqual} bg="primary">
+            =
+          </Button>
+        </ThreeButtonsSection>
       </CalculatorContainer>
     </Container>
   );

@@ -1,9 +1,4 @@
-import {
-  AreaDisplay,
-  HeaderDisplay,
-  ResultDisplay,
-  WrapperDisplay,
-} from './Display.style';
+import { AreaDisplay, ResultDisplay, WrapperDisplay } from './Display.style';
 
 interface DisplayType {
   data: string;
@@ -13,9 +8,6 @@ interface DisplayType {
 function Display({ data, result }: Readonly<DisplayType>) {
   return (
     <WrapperDisplay>
-      <HeaderDisplay>
-        <i className="fa fa-cog"></i>
-      </HeaderDisplay>
       <AreaDisplay>
         <textarea value={data} />
       </AreaDisplay>

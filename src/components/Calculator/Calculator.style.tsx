@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+export const Container = styled.div`
   display: inline-block;
   height: auto;
   width: 100%;
 `;
 
-const CalculatorContainer = styled.div`
+export const CalculatorContainer = styled.div`
   max-width: 20rem;
   height: 35rem;
   margin: ${({ theme }) => theme.spacing.large} auto;
@@ -20,22 +20,26 @@ const CalculatorContainer = styled.div`
   border: 1px solid rgb(128 128 128 / 75%);
 `;
 
-const NumbersWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-`;
-
-const ButtonsGroup = styled.div`
-  width: 100%;
-  flex: 1;
-  display: flex;
-`;
-
 export const Section = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
 `;
 
-export { Container, CalculatorContainer, ButtonsGroup, NumbersWrapper };
+export const ThreeButtonsSection = styled.section`
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+
+  button:first-child {
+    width: 50%;
+  }
+  button {
+    width: 25%;
+  }
+`;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;

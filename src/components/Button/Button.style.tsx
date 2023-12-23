@@ -3,6 +3,7 @@ import ElementPropStyledComponent from '../../interfaces/StyledComponent.interfa
 
 const Btn = styled.button`
   height: 100%;
+  width: 100%;
   background-color: ${({ theme }) => theme.colors.lightgray};
   color: white;
   font-size: 28px;
