@@ -32,4 +32,10 @@ const ButtonsGroup = styled.div`
   display: flex;
 `;
 
+export const Section = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`;
+
 export { Container, CalculatorContainer, ButtonsGroup, NumbersWrapper };

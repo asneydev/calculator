@@ -7,10 +7,10 @@ import {
 
 interface DisplayType {
   data: string;
-  result: string;
+  result: number;
 }
 
-function Display({ data, result }: DisplayType) {
+function Display({ data, result }: Readonly<DisplayType>) {
   return (
     <WrapperDisplay>
       <HeaderDisplay>

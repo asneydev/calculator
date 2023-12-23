@@ -2,22 +2,22 @@ import React from 'react';
 import { Btn } from './Button.style';
 
 interface ButtonProps {
-  toDisplay: VoidFunction;
   bg: string;
-  align: number;
+  align?: number;
   children?: React.ReactNode;
+  onClick?: () => void;
   rest?: object;
 }
 
-function Button({ align, bg, toDisplay, children, ...rest }: Readonly<ButtonProps>) {
+function Button({
+  align,
+  bg,
+  children,
+  onClick,
+  ...rest
+}: Readonly<ButtonProps>) {
   return (
-    <Btn
-      align={align}
-      primary={bg}
-      dark={bg === 'dark'}
-      onClick={toDisplay}
-      {...rest}
-    >
+    <Btn align={align} primary={bg} dark={bg === 'dark'} {...rest}>
       {children}
     </Btn>
   );

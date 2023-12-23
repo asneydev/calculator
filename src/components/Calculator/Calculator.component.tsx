@@ -6,20 +6,20 @@ import {
   CalculatorContainer,
   ButtonsGroup,
   NumbersWrapper,
+  Section,
 } from './Calculator.style';
 
-import {
-  equal,
-  percent,
-} from '../operations';
+import { equal, percent } from '../operations';
 import Display from '../Display';
-import { isValidDisplay, isValidToShowResult } from '../../helpers/validations';
+import { isValidDisplay } from '../../helpers/validations';
+import NumbersSection from '../NumbersSection/NumbersSection.component';
+import RightOperators from '../RightOperators/RightOperators.component';
 
 function Calculator() {
   const [displayValue, setDisplayValue] = useState<string>('');
-  const [result, setResult] = useState<string>('');
+  const [result, setResult] = useState<number>(0);
 
-  function handleButtonClick(btnValue: string) {
+  function handleButtonClick(btnValue: string): void {
     if (isValidDisplay(displayValue, btnValue)) {
       const actualDisplay = displayValue + btnValue;
       setDisplayValue(actualDisplay);
@@ -27,23 +27,21 @@ function Calculator() {
   }
 
   function getEqual(): void {
-    if (isValidToShowResult(displayValue)) {
-      const result = equal(displayValue).toString();
-      setResult(result);
-    }
+    const result = equal(displayValue);
+    setResult(result);
   }
 
   function calculatePercent() {
     if (isValidDisplay(displayValue, '%')) {
       const result = percent(displayValue);
-      setDisplayValue(result);
+      setDisplayValue(result.toString());
       setResult(result);
     }
   }
 
   function onClear(): void {
     setDisplayValue('');
-    setResult('');
+    setResult(0);
   }
 
   function goBack() {
@@ -58,138 +56,45 @@ function Calculator() {
         <Display data={displayValue} result={result} />
         <NumbersWrapper>
           <ButtonsGroup>
-            <Button align={1} bg="dark" toDisplay={onClear}>
+            <Button align={1} bg="dark" onClick={onClear}>
               Clear
             </Button>
-            <Button align={1} bg="dark" toDisplay={goBack}>
+            <Button align={1} bg="dark" onClick={goBack}>
               <i className="fa fa-angle-left"></i>
             </Button>
           </ButtonsGroup>
           <ButtonsGroup>
-            <Button
-              align={2}
-              bg="dark"
-              toDisplay={() => handleButtonClick('^')}
-            >
+            <Button align={2} bg="dark" onClick={() => handleButtonClick('^')}>
               &#8730;
             </Button>
-            <Button align={1} bg="dark" toDisplay={calculatePercent}>
+            <Button align={1} bg="dark" onClick={calculatePercent}>
               %
             </Button>
-            <Button
-              align={1}
-              bg="dark"
-              toDisplay={() => handleButtonClick('/')}
-            >
+            <Button align={1} bg="dark" onClick={() => handleButtonClick('/')}>
               /
             </Button>
           </ButtonsGroup>
-          <ButtonsGroup>
-            <Button
-              align={1}
-              bg="default"
-              toDisplay={() => handleButtonClick('7')}
-            >
-              7
-            </Button>
-            <Button
-              align={1}
-              bg="default"
-              toDisplay={() => handleButtonClick('8')}
-            >
-              8
-            </Button>
-            <Button
-              align={1}
-              bg="default"
-              toDisplay={() => handleButtonClick('9')}
-            >
-              9
-            </Button>
-            <Button
-              align={1}
-              bg="dark"
-              toDisplay={() => handleButtonClick('*')}
-            >
-              *
-            </Button>
-          </ButtonsGroup>
-          <ButtonsGroup>
-            <Button
-              align={1}
-              bg="default"
-              toDisplay={() => handleButtonClick('4')}
-            >
-              4
-            </Button>
-            <Button
-              align={1}
-              bg="default"
-              toDisplay={() => handleButtonClick('5')}
-            >
-              5
-            </Button>
-            <Button
-              align={1}
-              bg="default"
-              toDisplay={() => handleButtonClick('6')}
-            >
-              6
-            </Button>
-            <Button
-              align={1}
-              bg="dark"
-              toDisplay={() => handleButtonClick('-')}
-            >
-              -
-            </Button>
-          </ButtonsGroup>
-          <ButtonsGroup>
-            <Button
-              align={1}
-              bg="default"
-              toDisplay={() => handleButtonClick('1')}
-            >
-              1
-            </Button>
-            <Button
-              align={1}
-              bg="default"
-              toDisplay={() => handleButtonClick('2')}
-            >
-              2
-            </Button>
-            <Button
-              align={1}
-              bg="default"
-              toDisplay={() => handleButtonClick('3')}
-            >
-              3
-            </Button>
-            <Button
-              align={1}
-              bg="dark"
-              toDisplay={() => handleButtonClick('+')}
-            >
-              +
-            </Button>
-          </ButtonsGroup>
+          <Section>
+            <NumbersSection handleButtonClick={handleButtonClick} />
+            <RightOperators handleButtonClick={handleButtonClick} />
+          </Section>
+
           <ButtonsGroup>
             <Button
               align={2}
               bg="default"
-              toDisplay={() => handleButtonClick('0')}
+              onClick={() => handleButtonClick('0')}
             >
               0
             </Button>
             <Button
               align={1}
               bg="default"
-              toDisplay={() => handleButtonClick('.')}
+              onClick={() => handleButtonClick('.')}
             >
               .
             </Button>
-            <Button align={1} toDisplay={getEqual} bg="primary">
+            <Button align={1} onClick={getEqual} bg="primary">
               =
             </Button>
           </ButtonsGroup>

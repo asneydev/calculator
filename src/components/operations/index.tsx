@@ -1,4 +1,9 @@
+import { isValidToShowResult } from "../../helpers/validations";
+
 function equal(str: string): number {
+  if(!isValidToShowResult(str)){
+    return 0;
+  }
   const reg = /[*/+-\^]/;
   if (str.match(reg)) {
     let temp = '';
@@ -22,10 +27,10 @@ function equal(str: string): number {
   return parseFloat(str);
 }
 
-function percent(str: string): string {
+function percent(str: string): number {
   const calc = equal(str);
 
-  return (calc / 100).toString();
+  return (calc / 100);
 }
 
 export { equal, percent };
