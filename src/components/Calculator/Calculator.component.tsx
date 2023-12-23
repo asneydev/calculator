@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import Button from '../Button';
 import {
   Container,
@@ -14,51 +12,28 @@ import Display from '../Display';
 import { isValidDisplay } from '../../helpers/validations';
 import NumbersSection from '../NumbersSection/NumbersSection.component';
 import RightOperators from '../RightOperators/RightOperators.component';
+import { useDisplay } from '../../hooks/useDisplay';
 
 function Calculator() {
-  const [displayValue, setDisplayValue] = useState<string>('');
-  const [result, setResult] = useState<number>(0);
-
-  function handleButtonClick(btnValue: string): void {
-    if (isValidDisplay(displayValue, btnValue)) {
-      const actualDisplay = displayValue + btnValue;
-      setDisplayValue(actualDisplay);
-    }
-  }
-
-  function getEqual(): void {
-    const result = equal(displayValue);
-    setResult(result);
-  }
-
-  function calculatePercent() {
-    if (isValidDisplay(displayValue, '%')) {
-      const result = percent(displayValue);
-      setDisplayValue(result.toString());
-      setResult(result);
-    }
-  }
-
-  function onClear(): void {
-    setDisplayValue('');
-    setResult(0);
-  }
-
-  function goBack() {
-    const newDisplay = displayValue.slice(0, displayValue.length - 1);
-
-    setDisplayValue(newDisplay);
-  }
+  const {
+    display,
+    result,
+    backSpace,
+    clear,
+    handleButtonClick,
+    getEqual,
+    getPercent,
+  } = useDisplay();
 
   return (
     <Container>
       <CalculatorContainer>
-        <Display data={displayValue} result={result} />
+        <Display data={display} result={result} />
         <ButtonsWrapper>
-          <Button bg="dark" onClick={onClear}>
+          <Button bg="dark" onClick={clear}>
             Clear
           </Button>
-          <Button bg="dark" onClick={goBack}>
+          <Button bg="dark" onClick={backSpace}>
             <i className="fa fa-angle-left"></i>
           </Button>
         </ButtonsWrapper>
@@ -66,7 +41,7 @@ function Calculator() {
           <Button bg="dark" onClick={() => handleButtonClick('^')}>
             &#8730;
           </Button>
-          <Button bg="dark" onClick={calculatePercent}>
+          <Button bg="dark" onClick={getPercent}>
             %
           </Button>
           <Button bg="dark" onClick={() => handleButtonClick('/')}>
