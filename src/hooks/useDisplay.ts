@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { isValidDisplay } from '../helpers/validations';
-import { equal, percent } from '../components/operations';
+import { equal, percent } from '../helpers/operations';
 
 export const useDisplay = () => {
   const [display, setDisplay] = useState<string>('');

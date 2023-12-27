@@ -7,9 +7,7 @@ import {
   ButtonsWrapper,
 } from './Calculator.style';
 
-import { equal, percent } from '../operations';
 import Display from '../Display';
-import { isValidDisplay } from '../../helpers/validations';
 import NumbersSection from '../NumbersSection/NumbersSection.component';
 import RightOperators from '../RightOperators/RightOperators.component';
 import { useDisplay } from '../../hooks/useDisplay';
