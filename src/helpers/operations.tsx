@@ -4,7 +4,7 @@ export const equal = (str: string): number => {
   if (!isValidToShowResult(str)) {
     return 0;
   }
-  
+
   const exprecion = createExprecion(str);
   const result = calculteExprecion(exprecion);
 
@@ -13,11 +13,6 @@ export const equal = (str: string): number => {
 
 const calculteExprecion = (operations: string[]): string => {
   if (!operations.some((el) => el.match(/[*+-\/]/))) {
-    console.log(
-      'no',
-      operations,
-      operations.some((el) => el.match(/[*+-\/]/))
-    );
     return operations[0];
   }
 
@@ -64,7 +59,6 @@ const createExprecion = (str: string) => {
   const temp: string[] = [];
 
   for (let i = 0; i < str.length; i++) {
-    console.log(str, tempNum, temp, str[i]);
     if (str[i] === '+') {
       temp.push(tempNum);
       tempNum = '';
