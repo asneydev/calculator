@@ -18,6 +18,7 @@ export const useDisplay = () => {
   }
 
   function handleButtonClick(btnValue: string): void {
+    //TODO: check DOt(.) number by number in exprecion
     if (isValidDisplay(display, btnValue)) {
       const actualDisplay = display + btnValue;
       setDisplay(actualDisplay);

@@ -1,5 +1,6 @@
 import { isValidToShowResult } from './validations';
 
+//TODO: Check negative numbers in the expresion
 export const equal = (str: string): number => {
   if (!isValidToShowResult(str)) {
     return 0;
@@ -7,12 +8,13 @@ export const equal = (str: string): number => {
 
   const exprecion = createExprecion(str);
   const result = calculteExprecion(exprecion);
+  console.log(exprecion, result);
 
   return parseFloat(result);
 };
 
 const calculteExprecion = (operations: string[]): string => {
-  if (!operations.some((el) => el.match(/[*+-\/]/))) {
+  if (operations.length === 1) {
     return operations[0];
   }
 
@@ -27,7 +29,6 @@ const calculteExprecion = (operations: string[]): string => {
   const firstArrSection = operations.slice(0, operationIndex - 1);
   const restSection = operations.slice(operationIndex + 2);
   const result = [...firstArrSection, calc, ...restSection];
-
   return calculteExprecion(result);
 };
 
@@ -61,22 +62,27 @@ const createExprecion = (str: string) => {
   for (let i = 0; i < str.length; i++) {
     if (str[i] === '+') {
       temp.push(tempNum);
-      tempNum = '';
       temp.push('+');
+
+      tempNum = '';
     } else if (str[i] === '-' && i !== 0) {
       temp.push(tempNum);
-      tempNum = '';
       temp.push('-');
+
+      tempNum = '';
     } else if (str[i] === '*') {
       temp.push(tempNum);
-      tempNum = '';
       temp.push('*');
+
+      tempNum = '';
     } else if (str[i] === '/') {
       temp.push(tempNum);
-      tempNum = '';
       temp.push('/');
+
+      tempNum = '';
     } else {
       tempNum += str[i];
+
       if (i === str.length - 1) {
         temp.push(tempNum);
       }

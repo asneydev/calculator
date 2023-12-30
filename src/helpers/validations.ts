@@ -1,5 +1,4 @@
-const operationReg = /[\+\-\*\/\%\^]/;
-const invalidOperationToBegin = /[\+\*\/\%]/;
+const operationReg = /[+*%\/]/;
 
 function hasValidDot(str: string): boolean {
   if (str.startsWith('0')) {
@@ -20,7 +19,7 @@ function hasValidOperations(str: string, toAdd: string): boolean {
 }
 
 function isValidFirstCharacter(str: string, toAdd: string): boolean {
-  return !(str === '' && invalidOperationToBegin.test(toAdd));
+  return !(str === '' && operationReg.test(toAdd));
 }
 
 export const isValidDisplay = (display: string, toAdd: string): boolean => {
