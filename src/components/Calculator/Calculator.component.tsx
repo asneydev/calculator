@@ -12,7 +12,7 @@ import NumbersSection from '../NumbersSection/NumbersSection.component';
 import RightOperators from '../RightOperators/RightOperators.component';
 import { useDisplay } from '../../hooks/useDisplay';
 
-function Calculator() {
+export const Calculator = () => {
   const {
     display,
     result,
@@ -64,6 +64,6 @@ function Calculator() {
       </CalculatorContainer>
     </Container>
   );
-}
+};
 
 export default Calculator;

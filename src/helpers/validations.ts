@@ -18,15 +18,28 @@ function hasValidOperations(str: string, toAdd: string): boolean {
   return !(hasLastOperation && isOperation);
 }
 
-function isValidFirstCharacter(str: string, toAdd: string): boolean {
-  return !(str === '' && operationReg.test(toAdd));
+function isValidFirstCharacter(str: string, value: string): boolean {
+  const isEmpty = str.length === 0;
+  if (isEmpty && operationReg.test(value)) {
+    return false;
+  }
+
+  if (isEmpty && value === '-') {
+    return true;
+  }
+
+  return true;
 }
 
-export const isValidDisplay = (display: string, toAdd: string): boolean => {
-  const isValidDots = hasValidDot(display + toAdd);
-  const isValidOperation = hasValidOperations(display, toAdd);
-  const isInvalidFirst = isValidFirstCharacter(display, toAdd);
+export const isValidDisplay = (
+  display: string,
+  value: string
+): boolean | null => {
+  const isValidDots = hasValidDot(display + value);
+  const isValidOperation = hasValidOperations(display, value);
+  const isInvalidFirst = isValidFirstCharacter(display, value);
 
+  console.log({ isInvalidFirst, isValidDots, isValidOperation });
   return isValidDots && isValidOperation && isInvalidFirst;
 };
 
