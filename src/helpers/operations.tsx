@@ -8,7 +8,6 @@ export const equal = (str: string): number => {
 
   const exprecion = createExprecion(str);
   const result = calculteExprecion(exprecion);
-  console.log(exprecion, result);
 
   return parseFloat(result);
 };
@@ -20,9 +19,13 @@ const calculteExprecion = (operations: string[]): string => {
 
   const hasFirstCalcs = operations.some((el) => el.match(/[*\/]/));
 
-  const operationIndex = hasFirstCalcs
+  let operationIndex = hasFirstCalcs
     ? operations.findIndex((el) => el.match(/[*\/]/))
     : operations.findIndex((el) => el.match(/[+-]/));
+
+  if (operationIndex === 0) {
+    operationIndex = 1;
+  }
 
   const calc = operation(operations, operationIndex).toString();
 
@@ -56,10 +59,10 @@ const operation = (arr: string[], index: number): number => {
 };
 
 const createExprecion = (str: string) => {
-  let tempNum = '';
+  let tempNum = str[0];
   const temp: string[] = [];
 
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 1; i < str.length; i++) {
     if (str[i] === '+') {
       temp.push(tempNum);
       temp.push('+');
