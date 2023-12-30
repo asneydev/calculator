@@ -1,6 +1,5 @@
 import { isValidToShowResult } from './validations';
 
-//TODO: Check negative numbers in the expresion
 export const equal = (str: string): number => {
   if (!isValidToShowResult(str)) {
     return 0;
@@ -9,7 +8,9 @@ export const equal = (str: string): number => {
   const exprecion = createExprecion(str);
   const result = calculteExprecion(exprecion);
 
-  return parseFloat(result);
+  const round = parseFloat(result).toFixed(2);
+
+  return parseFloat(round);
 };
 
 const calculteExprecion = (operations: string[]): string => {
@@ -58,7 +59,7 @@ const operation = (arr: string[], index: number): number => {
   }
 };
 
-const createExprecion = (str: string) => {
+export const createExprecion = (str: string) => {
   let tempNum = str[0];
   const temp: string[] = [];
 

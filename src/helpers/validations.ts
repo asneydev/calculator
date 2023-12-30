@@ -1,13 +1,17 @@
 const operationReg = /[+*%\/]/;
 const allOperations = /[\+\-\*%\/]/;
+import { createExprecion } from './operations';
 
 function hasValidDot(str: string): boolean {
-  if (str.startsWith('0')) {
-    return false;
+  const exprecion = createExprecion(str);
+
+  if (exprecion.length === 0) {
+    return true;
   }
 
-  const hasDot = str.match(/\./g);
-  const countDot = hasDot ? hasDot.length : 0;
+  const exist = exprecion[exprecion.length - 1].match(/\./g);
+
+  const countDot = exist ? exist.length : 0;
 
   return countDot <= 1;
 }
