@@ -1,4 +1,5 @@
 const operationReg = /[+*%\/]/;
+const allOperations = /[\+\-\*%\/]/;
 
 function hasValidDot(str: string): boolean {
   if (str.startsWith('0')) {
@@ -12,8 +13,8 @@ function hasValidDot(str: string): boolean {
 }
 
 function hasValidOperations(str: string, toAdd: string): boolean {
-  const hasLastOperation = operationReg.test(str[str.length - 1]);
-  const isOperation = operationReg.test(toAdd);
+  const hasLastOperation = allOperations.test(str[str.length - 1]);
+  const isOperation = allOperations.test(toAdd);
 
   return !(hasLastOperation && isOperation);
 }
@@ -39,7 +40,6 @@ export const isValidDisplay = (
   const isValidOperation = hasValidOperations(display, value);
   const isInvalidFirst = isValidFirstCharacter(display, value);
 
-  console.log({ isInvalidFirst, isValidDots, isValidOperation });
   return isValidDots && isValidOperation && isInvalidFirst;
 };
 
