@@ -9,7 +9,7 @@ function Display({ data, result }: Readonly<DisplayType>) {
   return (
     <WrapperDisplay>
       <AreaDisplay>
-        <textarea value={data} />
+        <textarea defaultValue={data} />
       </AreaDisplay>
       <ResultDisplay>
         <p>=</p>
