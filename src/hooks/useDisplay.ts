@@ -19,7 +19,7 @@ export const useDisplay = () => {
 
   function handleButtonClick(btnValue: string): void {
     if (isValidDisplay(display, btnValue)) {
-      setDisplay((prevDisplay) => (prevDisplay + btnValue));
+      setDisplay((prevDisplay) => prevDisplay + btnValue);
     }
   }
 
@@ -36,6 +36,13 @@ export const useDisplay = () => {
     }
   }
 
+  function getSQRT() {
+    const result = equal(display);
+    const sqrt = Math.sqrt(result);
+
+    setResult(sqrt);
+  }
+
   return {
     display,
     result,
@@ -44,5 +51,6 @@ export const useDisplay = () => {
     handleButtonClick,
     getEqual,
     getPercent,
+    getSQRT,
   };
 };

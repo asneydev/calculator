@@ -21,6 +21,7 @@ export const Calculator = () => {
     handleButtonClick,
     getEqual,
     getPercent,
+    getSQRT,
   } = useDisplay();
 
   return (
@@ -36,7 +37,7 @@ export const Calculator = () => {
           </Button>
         </ButtonsWrapper>
         <ThreeButtonsSection>
-          <Button bg="dark" onClick={() => handleButtonClick('^')}>
+          <Button bg="dark" onClick={getSQRT}>
             &#8730;
           </Button>
           <Button bg="dark" onClick={getPercent}>
