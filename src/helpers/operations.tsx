@@ -63,6 +63,10 @@ export const createExprecion = (str: string) => {
   let tempNum = str[0];
   const temp: string[] = [];
 
+  if (str.length === 1) {
+    return [tempNum];
+  }
+
   for (let i = 1; i < str.length; i++) {
     if (str[i] === '+') {
       temp.push(tempNum);
